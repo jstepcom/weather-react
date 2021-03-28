@@ -1,9 +1,10 @@
 .App {
   text-align: center;
+  align-items: flex-end;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 40px;
   pointer-events: none;
 }
 
@@ -13,19 +14,19 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App-title{
+  margin-right: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header {
+  background-color: purple/*#282c34*/;
+  min-height: 50px;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
+  font-family: 'New Tegomin', serif;
+  color: lime;
 }
 
 @keyframes App-logo-spin {
