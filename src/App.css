@@ -23,11 +23,35 @@
   min-height: 50px;
   display: flex;
   flex-direction:row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   font-family: 'New Tegomin', serif;
   color: lime;
 }
+h1{
+  font-family: 'New Tegomin', serif;
+}
+
+.Search-form{
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
+/*.Search-button{
+  border-radius: 5px;
+  border-color: lime;
+  background-color: purple;
+  color: lime;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+.Search-button:hover{
+  border-color: purple;
+  background-color: lime;
+  color: purple;
+  
+}*/
 
 @keyframes App-logo-spin {
   from {
@@ -43,8 +67,6 @@
   width: 50px;
   transform: rotateY(180deg);
   animation: RunVelociraptor infinite 10s linear;
-
-
 }
 
 
