@@ -21,7 +21,8 @@
 .form-control{
   margin: 0 5px;
 }
-/*.Search-button{
+
+.btn{
   border-radius: 5px;
   border-color: lime;
   background-color: purple;
@@ -29,14 +30,12 @@
   transition: all 0.1s ease-in-out;
   cursor: pointer;
 }
-.Search-button:hover{
+.btn:hover{
   border-color: purple;
   background-color: lime;
   color: purple;
   
-}*/
-
-
+}
 
 .App-velociraptor{
   width: 50px;

@@ -33,12 +33,12 @@ export default function Weather(){
     }
     return(
     <nav className="navbar  Weather-header">
-        <img src={logo} alt=""  class="Weather-logo d-inline-block align-text-top"/>
-        <h1 className="Weather-title"> Weather app </h1>
-        <small>by JSCO</small>
-        <form onSubmit={handleSubmit} className="d-flex Weather-form">
+      <img src={logo} alt=""  class="Weather-logo d-inline-block align-text-top"/>
+      <h1> Weather app </h1>
+      <small>by JSCO</small>
+      <form onSubmit={handleSubmit} className="d-flex Weather-form">
         <input type="search" placeholder="Search City" className="form-control me-2" onChange={updateCity}/>
-        <button className="btn btn-outline-success" type="submit">Search</button>
+        <button className="btn" type="submit">Search</button>
       </form> 
     </nav>
     );
