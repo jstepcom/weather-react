@@ -1,0 +1,36 @@
+.Weather-header {
+    text-align: left;
+    background-color: purple/*#282c34*/;
+    height: 75px;
+    top: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction:row;
+    align-items: left;
+    justify-content: left;
+    color: lime;
+  }
+
+  .Weather-title{
+    margin-right: 10px;
+  }
+
+  .Weather-logo {
+    height: 40px;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .Weather-logo {
+      animation: Weather-logo-spin infinite 15s linear;
+    }
+  }
+
+  @keyframes Weather-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

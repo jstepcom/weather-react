@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import logo from './img/logo.svg';
+import './style/Weather.css';
 import Velociraptor from './img/Velociraptor.gif'
 import axios from 'axios';
 
 
-export default function (){
+export default function Weather(){
     let [city, setCity] = useState("");
     let [temperature, setTemperature] = useState(null);
     let apiKey = "b04fe89ae8d23d63826a70cf52ffdc7c";
@@ -29,30 +31,15 @@ export default function (){
     }else{
         text = "Loading ..."
     }
-   
-
     return(
-        
-    <div>
-
-     
-        <div className="card App-card" style={{ width: '75rem' }}>
-          <div className="row">
-          <div className="col">
-              <h1>
-                Forecast
-              </h1>
-            </div> 
-          <div className="col">
-              <h1>{text}</h1>
-              <img className="App-card-img" variant="top" src={Velociraptor} />
-            </div> 
-         </div>
-        </div>
-    
-      
-
-
-      </div>
+    <nav className="navbar  Weather-header">
+        <img src={logo} alt=""  class="Weather-logo d-inline-block align-text-top"/>
+        <h1 className="Weather-title"> Weather app </h1>
+        <small>by JSCO</small>
+        <form onSubmit={handleSubmit} className="d-flex Weather-form">
+        <input type="search" placeholder="Search City" className="form-control me-2" onChange={updateCity}/>
+        <button className="btn btn-outline-success" type="submit">Search</button>
+      </form> 
+    </nav>
     );
 }
