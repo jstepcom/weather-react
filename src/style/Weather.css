@@ -1,6 +1,6 @@
 .Weather-header {
     text-align: left;
-    background-color: purple/*#282c34*/;
+    background-color: purple;
     height: 75px;
     top: 5px;
     border-radius: 10px;
@@ -9,6 +9,7 @@
     align-items: left;
     justify-content: left;
     color: lime;
+    min-width: 900px;
   }
 
   .Weather h1{
