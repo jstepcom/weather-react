@@ -6,9 +6,11 @@
 
 .App footer{
   display: inline;
-  position: relative;
-  left: 500px;
-  bottom: 300px;
+  position: absolute;
+  align-items: left;
+  text-align: left;
+  left: 20px;
+  bottom: auto;
   color: purple;
 }
 
@@ -57,11 +59,11 @@
 }
 
 .App-card{
-  align-items: center;
+  min-width: 900px;
+  max-width: 1200px;
   position: relative;
-  display: block;
-  margin: 0 auto;
-  text-align: center;
+  display: flex;
+  margin: 100px auto;
 }
 
 .App-card-img{

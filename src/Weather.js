@@ -1,45 +1,48 @@
 import React, { useState } from 'react';
 import logo from './img/logo.svg';
+import Load from './Load';
 import './style/Weather.css';
-import Velociraptor from './img/Velociraptor.gif'
 import axios from 'axios';
+import SearchEngine from './SearchEngine';
 
 
 export default function Weather(){
-    let [city, setCity] = useState("");
-    let [temperature, setTemperature] = useState(null);
-    let apiKey = "b04fe89ae8d23d63826a70cf52ffdc7c";
+  const apiKey = "b04fe89ae8d23d63826a70cf52ffdc7c"; 
+  let [city, setCity] = useState("Monterrey");
+  const [data, setData] = useState();
+  const [run, setRun] = useState(false);
+
     
-    function handleSubmit(event){
-        event.preventDefault();
+    function getData(response){
+      console.log(response.data)
+      setData(response.data);
+      setRun (true);
+
     }
 
-    function updateCity(event){
-        setCity(event.target.value);  
-    }
-    
-    function showTemp(response){
-    setTemperature(response.data.main.temp);
-    }
-    
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-    axios.get(apiUrl).then(showTemp)
-    
-    let text = "Type a City";
-    if(temperature){
-        text = `The current temperature in ${city} is ${Math.round(temperature)} °C`
-    }else{
-        text = "Loading ..."
-    }
-    return(
-    <nav className="navbar  Weather-header">
-      <img src={logo} alt=""  class="Weather-logo d-inline-block align-text-top"/>
-      <h1> Weather app </h1>
-      <small>by JSCO</small>
-      <form onSubmit={handleSubmit} className="d-flex Weather-form">
-        <input type="search" placeholder="Search City" className="form-control me-2" onChange={updateCity}/>
-        <button className="btn" type="submit">Search</button>
-      </form> 
-    </nav>
-    );
+    if (run){
+      return(
+        <div>
+          <nav className="navbar  Weather-header">
+            <img src={logo} alt=""  className="Weather-logo d-inline-block align-text-top"/>
+            <h1> Weather app </h1>
+            <small>by JSCO</small>
+            <form className="d-flex Weather-form">
+              <input type="search" placeholder="Search City" className="form-control me-2" />
+              <button className="btn" type="submit">Search</button>
+            </form> 
+          </nav>
+          <div className="card App-card" >
+            <SearchEngine info={data}/>
+          </div>
+        </div>
+    );} else{
+
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+      axios.get(apiUrl).then(getData)
+      return(
+        <div> <div className="card App-card" style={{ width: '75rem' }}>
+        <Load />
+      </div></div>
+      );}    
 }
