@@ -1,0 +1,17 @@
+.Forecast {
+    border: 1px solid #aacfcf;
+    margin: 2px;
+    color: purple;
+
+}
+.Data ul{
+    list-style: none;
+    text-align: center;
+}
+.current {
+    display: inline;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 2.5px;
+}

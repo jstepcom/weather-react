@@ -1,5 +1,5 @@
 import Weather from './Weather';
-import SearchEngine from './SearchEngine';
+
 
 import './style/App.css';
 
