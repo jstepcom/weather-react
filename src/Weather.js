@@ -17,7 +17,8 @@ export default function Weather({defaultCity}){
     setRun (true);}
 
   function handleSubmit(event){
-    console.log("si entra")
+    event.preventDefault();
+    alert(city);
   }
   
   function handleCity(event){
