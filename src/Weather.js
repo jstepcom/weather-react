@@ -6,31 +6,37 @@ import axios from 'axios';
 import DataLog from './DataLog';
 
 
-export default function Weather(){
-
+export default function Weather({defaultCity}){
   const apiKey = "b04fe89ae8d23d63826a70cf52ffdc7c"; 
-  let [city, setCity] = useState("Monterrey");
   const [data, setData] = useState();
   const [run, setRun] = useState(false);
-    
+  const [city, setCity] = useState(defaultCity);
+
   function getData(response){
-    console.log(response.data)
     setData(response.data);
     setRun (true);}
+
+  function handleSubmit(event){
+    console.log("si entra")
+  }
+  
+  function handleCity(event){
+    setCity(event.target.value);
+  }
 
   if (run){
     return(
       <div>
         <nav className="navbar  Weather-header">
-          <img src={logo} alt=""  className="Weather-logo d-inline-block align-text-top"/>
+          <img src={logo} alt="react-logo"  className="Weather-logo d-inline-block align-text-top"/>
           <h1> Weather app </h1>
           <small>by JSCO</small>
-          <form className="d-flex Weather-form">
-            <input type="search" placeholder="Search City" className="form-control me-2" />
+          <form onSubmit={handleSubmit} className="d-flex Weather-form">
+            <input type="search" placeholder="Search City" autoFocus= "on" className="form-control me-2" onChange={handleCity}/>
             <button className="btn" type="submit">Search</button>
           </form> 
         </nav>
-        <div className="card border-info" >
+        <div className="card border-info">
           <DataLog info={data}/>
         </div>
       </div>

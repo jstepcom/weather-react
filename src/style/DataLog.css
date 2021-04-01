@@ -4,7 +4,7 @@
     color: purple;
 
 }
-.Data ul{
+.data ul{
     list-style: none;
     text-align: center;
 }
@@ -13,5 +13,9 @@
     text-align: center;
     align-items: center;
     flex-wrap: wrap;
-    padding-left: 2.5px;
+    padding-left: 3px;
+}
+
+h2 {
+ font-weight: 800;
 }
