@@ -4,6 +4,7 @@ import Load from './Load';
 import './style/Weather.css';
 import axios from 'axios';
 import DataLog from './DataLog';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Weather({defaultCity}){
@@ -16,9 +17,15 @@ export default function Weather({defaultCity}){
     setData(response.data);
     setRun (true);}
 
+  function search(){
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    axios.get(apiUrl).then(getData)
+
+  } 
+
   function handleSubmit(event){
     event.preventDefault();
-    alert(city);
+    search();
   }
   
   function handleCity(event){
@@ -42,8 +49,7 @@ export default function Weather({defaultCity}){
         </div>
       </div>
     );} else{
-      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-      axios.get(apiUrl).then(getData)
+      search();
       return(
         <div> <div className="card App-card" style={{ width: '75rem' }}>
         <Load />
