@@ -14,7 +14,8 @@ export default function DataLog({info}){
                 humidity:info.main.humidity, 
                 icon:info.weather[0].icon, 
                 time:new Date(info.dt * 1000)}
-  const iconUrl=`http://openweathermap.org/img/wn/${data.icon}png`
+                
+  const iconUrl=`http://openweathermap.org/img/wn/${data.icon}.png`
    
     return(
     <div className="data">
@@ -23,7 +24,7 @@ export default function DataLog({info}){
           <h1>This week</h1>
         </div> 
         <div className="col-md-4">
-            <img src='/' />
+            <img src={iconUrl} />
             <h2 className="current"> {data.temp}°C </h2> 
             <h4 className="current"> {data.city}, <small>{data.country}</small></h4>
             <NiceDate time={data.time}/>

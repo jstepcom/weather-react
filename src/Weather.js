@@ -25,7 +25,8 @@ export default function Weather({defaultCity}){
 
   function handleSubmit(event){
     event.preventDefault();
-    search();
+    if (city){
+    search();}else{alert("Please type a city")}
   }
   
   function handleCity(event){

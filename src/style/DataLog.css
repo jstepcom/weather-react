@@ -1,8 +1,12 @@
 .Forecast {
     border: 1px solid #aacfcf;
+    border-radius: 25px;
     margin: 2px;
     color: purple;
 
+}
+.Forecast h4{
+    font-weight: 900;
 }
 .data ul{
     list-style: none;
