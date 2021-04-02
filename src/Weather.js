@@ -6,7 +6,6 @@ import axios from 'axios';
 import DataLog from './DataLog';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-
 export default function Weather({defaultCity}){
   const apiKey = "b04fe89ae8d23d63826a70cf52ffdc7c"; 
   const dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?`;
@@ -23,18 +22,29 @@ export default function Weather({defaultCity}){
   const [run, setRun] = useState(false);
   const [city, setCity] = useState(defaultCity);
   const [predictionData, setPredictionData] = useState(onError);
+  const [picture, setPicture] = useState({data:{}});
+  let [picUrl, setPicUrl] = useState(false);
 
   function getPrediction(response){
     setPredictionData(response.data);
   }
 
+  function getCityImg(response){
+    setPicture(response.data.photos[0].image.web);
+    setPicUrl(true);
+  }
+  
   function getData(response){
-    const predUrl = `${dailyUrl}lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&units=metric&appid=${apiKey}`
+    const predUrl = `${dailyUrl}lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&units=metric&appid=${apiKey}`;
     axios.get(predUrl).then(getPrediction);
+    let newCity= (response.data.name.toLowerCase());
+    newCity = newCity.replace(" ","-")
+    const imgUrl = `https://api.teleport.org/api/urban_areas/slug:${newCity}/images/`;
+    axios.get(imgUrl).then(getCityImg);
+    setPicUrl(false)
     setData(response.data);
     setRun (true);
   }
-
 
   function search(){
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
@@ -65,7 +75,7 @@ export default function Weather({defaultCity}){
           </form> 
         </nav>
         <div className="card border-info">
-          <DataLog info={data} predInfo={predictionData}/>
+          <DataLog info={data} predInfo={predictionData} pic={picture} nedry={picUrl}/>
         </div>
       </div>
     );} else{

@@ -2,10 +2,10 @@ import React from 'react';
 import Prediction from './Prediction';
 import Picture from './Picture';
 import NiceDate from './NiceDate';
-import Nedry from './img/DNedry.gif'
 import './style/DataLog.css'
 
-export default function DataLog({info, predInfo}){
+export default function DataLog({info, predInfo, pic, nedry}){
+  console.log(nedry)
   const days = ["Sunday", "Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const numbers=[0,1,2,3,4,5,6]
   const wday = [];
@@ -23,7 +23,7 @@ export default function DataLog({info, predInfo}){
                 icon:info.weather[0].icon, 
                 time:new Date(info.dt * 1000), 
                 coord:info.coord}
-    // console.log(data)             
+             
   const iconUrl=`http://openweathermap.org/img/wn/`
   const wDate = data.time.getDay();
   
@@ -48,7 +48,7 @@ export default function DataLog({info, predInfo}){
             <Prediction weekData = {predInfo} wday={wday[4]} week={days} icon={iconUrl}/>
             <Prediction weekData = {predInfo} wday={wday[5]} week={days} icon={iconUrl}/>
           </div>
-           <Picture />
+           <Picture image = {pic} dennis = {nedry}/>
           {/* <img className="left" src={Nedry} alt="no image"/> */}
         </div> 
         <div className="col-4">
