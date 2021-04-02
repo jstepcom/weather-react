@@ -1,0 +1,22 @@
+.prediction{
+    display: inline-block;
+    border: 1px solid purple;
+    border-radius: 75%;
+    min-width: 15%;
+    margin: 0 5px;
+}
+
+.prediction h5{
+    font-size: 100%;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.prediction p{
+    margin-bottom: 10px;
+}
+
+.prediction img{
+    margin: 0px;
+    width: 30%;
+}

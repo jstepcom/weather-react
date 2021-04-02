@@ -1,25 +1,49 @@
-.Forecast {
-    border: 1px solid #aacfcf;
-    border-radius: 25px;
-    margin: 2px;
-    color: purple;
+.data{
+    display: block;
+    text-align: center;
+}
+.left {
+    position: relative;
+    border-radius: 100px;
+    margin: 10px;
+    height: 150px;
+}
 
+.title{
+    display: flex;
+    margin-top: 10px;
+}
+
+.title h2 {
+    margin-left: 20px;
+    font-weight: bolder;
+    flex-wrap: wrap;
+   }
+
+.title h4{
+       margin: 7.5px;
+   }
+
+.Forecast {
+    position: relative;
+    margin: 30px 5px 2px 0;
+    border: 1.5px solid #aacfcf;
+    border-radius: 25px;
+    color: purple;  
 }
 .Forecast h4{
     font-weight: 900;
 }
+
 .data ul{
     list-style: none;
-    text-align: center;
-}
-.current {
-    display: inline;
-    text-align: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding-left: 3px;
+    text-align: left;
+    display: inline-block;
+    margin: 2px auto;
 }
 
-h2 {
- font-weight: 800;
-}
+
+
+
+
+

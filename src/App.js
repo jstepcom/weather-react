@@ -1,8 +1,6 @@
 import Weather from './Weather';
 import Velociraptor from './img/Velociraptor.gif';
-
 import './style/App.css';
-
 
 function App() {
   return (

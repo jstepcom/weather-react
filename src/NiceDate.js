@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default function NiceDate({time}){
-    let days = ["Sunday", "Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+export default function NiceDate({time, days}){
     let day = days[time.getDay()];
     let daynum = time.getDate();
     let hours = time.getHours();

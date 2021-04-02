@@ -9,13 +9,23 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function Weather({defaultCity}){
   const apiKey = "b04fe89ae8d23d63826a70cf52ffdc7c"; 
+  const dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?`
   const [data, setData] = useState();
   const [run, setRun] = useState(false);
   const [city, setCity] = useState(defaultCity);
+  const [predictionData, setPredictionData] = useState();
+
+  function getPrediction(response){
+    setPredictionData(response.data);
+  }
 
   function getData(response){
+    const predUrl = `${dailyUrl}lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&units=metric&appid=${apiKey}`
+    axios.get(predUrl).then(getPrediction)
     setData(response.data);
-    setRun (true);}
+    setRun (true);
+  }
+
 
   function search(){
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
@@ -46,7 +56,7 @@ export default function Weather({defaultCity}){
           </form> 
         </nav>
         <div className="card border-info">
-          <DataLog info={data}/>
+          <DataLog info={data} predInfo={predictionData}/>
         </div>
       </div>
     );} else{
