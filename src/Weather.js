@@ -54,7 +54,7 @@ export default function Weather({defaultCity}){
 
   if (run){
     return(
-      <div>
+      <div className="Weather">
         <nav className="navbar  Weather-header">
           <img src={logo} alt="react-logo"  className="Weather-logo d-inline-block align-text-top"/>
           <h1> Weather app </h1>
