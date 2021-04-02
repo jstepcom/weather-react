@@ -47,9 +47,9 @@ export default function DataLog({info, predInfo}){
             <Prediction weekData = {predInfo} wday={wday[3]} week={days} icon={iconUrl}/>
             <Prediction weekData = {predInfo} wday={wday[4]} week={days} icon={iconUrl}/>
             <Prediction weekData = {predInfo} wday={wday[5]} week={days} icon={iconUrl}/>
-            {/* <Picture pic={false}/> */}
           </div>
-          <img className="left" src={Nedry} alt="no image"/>
+           <Picture />
+          {/* <img className="left" src={Nedry} alt="no image"/> */}
         </div> 
         <div className="col-4">
           <div className="title"> 
@@ -61,7 +61,7 @@ export default function DataLog({info, predInfo}){
             <h4>{data.city}, <small>{data.country}</small></h4>
           </div>
             <NiceDate time={data.time} days = {days}/>
-            <h5 className="text-capitalize">{data.description} | <small>Max. {data.max}° - Min. {data.min}°</small></h5>
+            <h5 className="text-capitalize statistic">{data.description} | <small>Max:{data.max}°-Min:{data.min}°</small></h5>
             <div className="Forecast">
             <h4>Forecast</h4>
             <ul>

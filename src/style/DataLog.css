@@ -15,6 +15,7 @@
 }
 
 .title h2 {
+    color: #000;
     margin-left: 20px;
     font-weight: bolder;
     flex-wrap: wrap;
@@ -42,6 +43,15 @@
     margin: 2px auto;
 }
 
+.statistic small{
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: purple;
+}
+
+.col-8 h2{
+    color: #28527a;
+}
 
 
 

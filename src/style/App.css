@@ -15,22 +15,8 @@
   color: purple;
 }
 
-.App-velociraptor{
-  width: 50px;
-  animation: RunVelociraptor infinite 10s linear;
-}
 
 
-@keyframes RunVelociraptor {
-  
-  from {
-    transform: translateX(550px);
-  
-  }
-  to {
-    transform: translateX(-550px);
-   
-  }
-}
+
 
 

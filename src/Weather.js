@@ -9,11 +9,20 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function Weather({defaultCity}){
   const apiKey = "b04fe89ae8d23d63826a70cf52ffdc7c"; 
-  const dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?`
+  const dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?`;
+  const onError = {current: {uvi: 0}, 
+                  daily:[{temp:{max:0, min:0},
+                          weather:[{icon:"04d"}]},{temp:{max:"04d", min:0},
+                          weather:[{icon:"04d"}]},{temp:{max:0, min:0},
+                          weather:[{icon:"04d"}]},{temp:{max:0, min:0},
+                          weather:[{icon:"04d"}]},{temp:{max:0, min:0},
+                          weather:[{icon:"04d"}]},{temp:{max:0, min:0},
+                          weather:[{icon:"04d"}]},{temp:{max:0, min:0},
+                          weather:[{icon:"04d"}]}]}
   const [data, setData] = useState();
   const [run, setRun] = useState(false);
   const [city, setCity] = useState(defaultCity);
-  const [predictionData, setPredictionData] = useState();
+  const [predictionData, setPredictionData] = useState(onError);
 
   function getPrediction(response){
     setPredictionData(response.data);
@@ -21,7 +30,7 @@ export default function Weather({defaultCity}){
 
   function getData(response){
     const predUrl = `${dailyUrl}lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&units=metric&appid=${apiKey}`
-    axios.get(predUrl).then(getPrediction)
+    axios.get(predUrl).then(getPrediction);
     setData(response.data);
     setRun (true);
   }
