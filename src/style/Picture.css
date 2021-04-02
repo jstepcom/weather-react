@@ -31,7 +31,10 @@
  
 .no-city p{
     font-family: 'New Tegomin', serif;
-    margin:0;
+    color: lime;
+    margin-top: 10px;
+    margin-bottom: 0 ;
+    background-color: purple;
     
     /* margin-top: 10px: */
 }

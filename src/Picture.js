@@ -12,10 +12,10 @@ export default function Picture(image){
             </div>
         );} else{
             return (
-            <div>
+            <div className = "no-city">
                 <img src = {Velociraptor} className = "pic-velociraptor" alt = "velociraptor" />
-                <p className = "no-city">There's no image for this city</p>
-                <img className="left" src={Nedry} alt="no image"/>
+                <p>Ah ah ah!!! there's no image for this city</p>
+                <img className="left" src = {Nedry} alt="no image"/>
             </div>);
         }
 }
