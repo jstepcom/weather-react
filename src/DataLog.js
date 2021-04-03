@@ -2,6 +2,7 @@ import React from 'react';
 import Prediction from './Prediction';
 import Picture from './Picture';
 import NiceDate from './NiceDate';
+import WeatherUnits from './WeatherUnits';
 import './style/DataLog.css'
 
 export default function DataLog({info, predInfo, pic, nedry}){
@@ -49,15 +50,12 @@ export default function DataLog({info, predInfo, pic, nedry}){
             <Prediction weekData = {predInfo} wday={wday[5]} week={days} icon={iconUrl}/>
           </div>
            <Picture image = {pic} dennis = {nedry}/>
-          {/* <img className="left" src={Nedry} alt="no image"/> */}
         </div> 
         <div className="col-4">
           <div className="title"> 
             <img src={`${iconUrl}${data.icon}.png`} alt="Weather icon"/>
-            <h2>{data.temp}</h2> 
-            <p>ºC</p>
-            <p>|</p>
-            <p>ºF</p>
+            
+            <WeatherUnits celsius={info.main.temp} />
             <h4>{data.city}, <small>{data.country}</small></h4>
           </div>
             <NiceDate time={data.time} days = {days}/>
