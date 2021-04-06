@@ -1,5 +1,4 @@
 .prediction{
-    display: inline-block;
     border: 1px solid purple;
     border-radius: 75%;
     min-width: 15%;
@@ -8,6 +7,7 @@
 
 .prediction h5{
     font-size: 100%;
+    font-weight: bolder;
     margin-top: 10px;
     margin-bottom: 0;
 }

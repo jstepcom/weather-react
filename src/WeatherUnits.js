@@ -29,9 +29,5 @@ export default function WeatherUnits({celsius}){
         <a href='/' onClick = {convertToCelsius}>ºC</a>|ºF
         </div>
     );
-
-    }
-
-    
-    
+    }    
 }

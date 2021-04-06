@@ -1,7 +1,7 @@
 .load h1{
-    display: block;
+    display: inline;
     margin: 0 auto;
-    font-size: 200px;
+    font-size: 100px;
     font-weight: bolder;
     text-align: center;
     align-items: center;
@@ -18,12 +18,24 @@
   @keyframes RunVelociraptor {
 
     from {
-      transform: 
-      translateX(800px);
+      transform: translateX(800px);
     }
     to {
-      transform: 
-      translateX(-200px);
-     
+      transform: translateX(-200px);
+    }
+  }
+  
+  .load-dilofosauro{
+    display: inline;
+    width: 90px;
+    border-radius: 85%;
+    animation: DinaSpin infinite 5s linear;
+  }
+
+  @keyframes DinaSpin {
+    from{
+      transform: rotate(0deg);
+    }to{
+      transform: rotate(360deg);
     }
   }

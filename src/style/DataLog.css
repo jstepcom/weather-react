@@ -3,25 +3,36 @@
     text-align: center;
     background-color: rgb(250,250,250);
     min-width: 1000px;
+    color: #28527a;
 }
 
 .title{
     display: flex;
-    align-items:flex-start;
-    text-align: center;
+    align-items: center;
+    margin-left: 25px; 
     margin-top: 10px;
 }
 
+.title img{
+    width: 75px;
+    height: 75px;
+    
+}
+
 .title h2 {
-    color: #000;
-    margin-left: 20px;
-    font-weight: bolder;
-    flex-wrap: wrap;
+    color: purple;
+    margin: 0 20px;
+    font-weight: bolder; 
    }
 
+.celsius{
+    font-size: 70%;
+    vertical-align: super;
+}
+
 .title h4{
-       margin: 7.5px;
-       margin-right: 0;
+       margin-top: 7.5px;
+       
    }
 
 .Forecast {
@@ -41,11 +52,18 @@
     display: inline-block;
     margin: 2px auto;
 }
+.dataloop{
+    display: flex;
+}
 
 .statistic small{
     text-align: center;
     text-decoration: underline;
     text-decoration-color: purple;
+}
+
+.col-4{
+    
 }
 
 .col-8 h2{

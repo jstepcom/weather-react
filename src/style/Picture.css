@@ -4,10 +4,6 @@
     width: 50px;
     animation: RunVelociraptor infinite 5s linear;
   }
-  .picture{
-      width: 75%;
-      margin: 15px auto;
-  }
 
   @keyframes RunVelociraptor {
     from {
@@ -20,6 +16,20 @@
      
     }
   }
+
+  .picture{
+    width: 75%;
+    margin: 15px auto;
+    border-radius: 10px;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: CityIn 2s 1s linear;
+}
+
+@keyframes CityIn {
+  from{width: 25px;}
+  to{width: 75%;}
+  
+}
 
   .left {
     position: relative;

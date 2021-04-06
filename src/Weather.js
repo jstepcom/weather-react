@@ -41,7 +41,7 @@ export default function Weather({defaultCity}){
   const [swalProps, setSwalProps] = useState({});
   function handleSubmit(event){
     event.preventDefault();
-    if (city){search();}
+    if (data.city){search();}
     else{
       setSwalProps({
         show: true,
