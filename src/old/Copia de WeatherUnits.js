@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DataLog from './DataLog'
+import DataLog from '../DataLog'
 import './style/WeatherUnits.css';
 
 export default function WeatherUnits({info}){

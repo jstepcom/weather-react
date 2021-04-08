@@ -3,11 +3,10 @@ import Prediction from './Prediction';
 import Picture from './Picture';
 import NiceDate from './NiceDate';
 import Load from './Load';
-import WeatherUnits from './WeatherUnits';
 import axios from 'axios';
 import './style/DataLog.css'
 
-export default function DataLog({info, pic, nedry}){
+export default function DataLog({info}){
   
   const iconUrl=`http://openweathermap.org/img/wn/`;
   const days = ["Sunday", "Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -33,11 +32,8 @@ export default function DataLog({info, pic, nedry}){
  }
 
   function unitChange(){
-    if (units==='metric'){
-      console.log('imperial')
-      setUnits('imperial')
-    }else{setUnits('metric')}
-  }
+    if (units==='metric'){return('m/s');
+    }else{return('mph')}}
 
   useEffect(()=>{
     setLoaded(false)
@@ -57,24 +53,22 @@ export default function DataLog({info, pic, nedry}){
              </div>);}else{return(null)}
            })}
          </div>
-          <Picture image = {pic} dennis = {nedry} place={info.city}/>
+          <Picture place={info.city}/>
       </div> 
       <div className="col-4">
         <div className="title"> 
          <img src={`${iconUrl}${data.icon}.png`} alt="Weather icon"/>
-         <h2>{data.temp}</h2><div className='celsius'>
-         {/* ºC|<a href='/' onClick = {unitChange} >ºF</a> */}
-           </div>
+         <h2>{data.temp}</h2>
          
-         <h4>{info.city}, <small>{info.country}</small></h4>
        </div>
+       <h4>{info.city}, <small>{info.country}</small></h4>
          <NiceDate time={data.time} days = {days}/>
          <h5 className="text-capitalize statistic">{data.description} | <small>Max:{data.max}°-Min:{data.min}°</small></h5>
          <div className="Forecast">
          <h4>Forecast</h4>
          <ul>
            <li>Pressure: {data.pressure} hPa</li>
-           <li>Wind Speed: {data.wind} m/s </li>
+           <li>Wind Speed: {data.wind} {unitChange() }</li>
            <li>UV Index: {data.uvi} </li>
            <li>Humidity: {data.humidity}% </li>
          </ul>

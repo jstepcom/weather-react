@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import DataLog from './DataLog'
-import './style/WeatherUnits.css';
+import DataLog from '../DataLog'
+// import './style/WeatherUnits.css';
 
 export default function WeatherUnits({info}){
 
@@ -16,8 +16,6 @@ export default function WeatherUnits({info}){
             unit:'imperial',
             key:info.key,
             run:true});
-        
-
     }
     function convertToCelsius(event){
         event.preventDefault();
@@ -33,7 +31,7 @@ export default function WeatherUnits({info}){
         <div className = 'units'>
             {/* <h2>{Math.round(celsius)}</h2>  */}
             ºC|<a href='/' onClick = {convertToFahrenheit} >ºF</a>
-            <DataLog info={unit}/>
+            {/* <DataLog info={unit}/> */}
         </div>);
     }else{ 
         // tempValue = Math.round((celsius * 9/5)+32);
@@ -41,7 +39,7 @@ export default function WeatherUnits({info}){
         <div className = 'units'>
         {/* <h2>{tempValue}</h2> */}
         <a href='/' onClick = {convertToCelsius}>ºC</a>|ºF
-        <DataLog info={unit}/>
+        {/* <DataLog info={unit}/> */}
         </div>
     );
     }    
