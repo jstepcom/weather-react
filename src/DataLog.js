@@ -57,7 +57,7 @@ export default function DataLog({info, pic, nedry}){
              </div>);}else{return(null)}
            })}
          </div>
-          {/* <Picture image = {pic} dennis = {nedry} place={info.city}/> */}
+          <Picture image = {pic} dennis = {nedry} place={info.city}/>
       </div> 
       <div className="col-4">
         <div className="title"> 
