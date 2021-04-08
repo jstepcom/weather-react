@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Prediction from './Prediction';
 import Picture from './Picture';
 import NiceDate from './NiceDate';
@@ -14,8 +14,15 @@ export default function DataLog({info, pic, nedry}){
   let [loaded, setLoaded] = useState(false);
   let [data, setData] = useState({time:new Date(),icon:'01d'});
   let [wData, setWData] = useState(null);
-  let [units, setUnits] = useState(info.unit);
+  let [units, setUnits] = useState('metric');
 
+useEffect(()=>{
+  setLoaded(false);
+},[info.coord])
+
+useEffect(()=>{
+  setLoaded(false);
+},[units])
 
   function handleResponse(response){
     setWData(response.data.daily);
@@ -39,9 +46,6 @@ export default function DataLog({info, pic, nedry}){
     }else{setUnits('metric')}
   }
 
-  useEffect(()=>{
-    setLoaded(false)
-  },[info.unit])
  
  if(loaded){
  return(
@@ -57,13 +61,13 @@ export default function DataLog({info, pic, nedry}){
              </div>);}else{return(null)}
            })}
          </div>
-          {/* <Picture image = {pic} dennis = {nedry} place={info.city}/> */}
+          <Picture image = {pic} dennis = {nedry} place={info.city}/>
       </div> 
       <div className="col-4">
         <div className="title"> 
          <img src={`${iconUrl}${data.icon}.png`} alt="Weather icon"/>
          <h2>{data.temp}</h2><div className='celsius'>
-         {/* ºC|<a href='/' onClick = {unitChange} >ºF</a> */}
+         ºC|<a href='/' onClick = {unitChange} >ºF</a>
            </div>
          
          <h4>{info.city}, <small>{info.country}</small></h4>
@@ -85,8 +89,7 @@ export default function DataLog({info, pic, nedry}){
  );
 }
 else{
-  console.log(info.coord)
    const dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?`;
-   const predUrl = `${dailyUrl}lat=${info.coord.lat}&lon=${info.coord.lon}&units=${info.unit}&appid=${info.key}`;
+   const predUrl = `${dailyUrl}lat=${info.coord.lat}&lon=${info.coord.lon}&units=${units}&appid=${info.key}`;
    axios.get(predUrl).then(handleResponse);
    return <Load/>;}}

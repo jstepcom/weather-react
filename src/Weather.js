@@ -1,48 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './img/logo.svg';
 import Load from './Load';
-import DataLog from './DataLog';
+import WeatherUnits from './WeatherUnits';
 import './style/Weather.css';
 import axios from 'axios';
 import SweetAlert2 from 'react-sweetalert2';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Weather({defaultCity}){
   const apiKey = "b04fe89ae8d23d63826a70cf52ffdc7c"; 
-  const [data, setData] = useState({run:false});
-  const [city, setCity] = useState(defaultCity);
-  const [picture, setPicture] = useState({data:{}});
-  let [picUrl, setPicUrl] = useState(false);
+  let [data, setData] = useState({run:false});
+  let [empty, setEmpty] = useState(false);
+  let [city, setCity] = useState(defaultCity);
+  let [swalProps, setSwalProps] = useState({});
 
-  function getCityImg(response){
-    setPicture(response.data.photos[0].image.web);
-    setPicUrl(true);
-  }
-  
   function getData(response){
-    let newCity= (response.data.name.toLowerCase());
-    newCity = newCity.replace(" ","-")
-    const imgUrl = `https://api.teleport.org/api/urban_areas/slug:${newCity}/images/`;
-    axios.get(imgUrl).then(getCityImg);
-    setPicUrl(false);
     setData({city:response.data.name,
              country:response.data.sys.country,
              coord:response.data.coord,
-             key:apiKey,
+             unit:'imperial',
+             key:"b04fe89ae8d23d63826a70cf52ffdc7c",
              run:true});
+    setEmpty(true);
   }
 
   function search(){
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-    axios.get(apiUrl).then(getData)
+    axios.get(apiUrl).then(getData);
 
   } 
 
-  const [swalProps, setSwalProps] = useState({});
   function handleSubmit(event){
     event.preventDefault();
-    if (data.city){search();}
+    // console.log(this.state.value)
+    if (empty){search();}
     else{
+      console.log('no')
       setSwalProps({
         show: true,
         showConfirmButton: true,
@@ -60,10 +53,17 @@ export default function Weather({defaultCity}){
   
   function handleCity(event){
     setCity(event.target.value);
+    if(event.target.value){
+      console.log(event.target.value)
+      setEmpty(true)
+    }else{
+      console.log('Nocity');
+      setEmpty(false)
+    }
+
   }
 
   if (data.run){
-    
     return(
       <div className="Weather">
         <nav className="navbar  Weather-header">
@@ -76,7 +76,7 @@ export default function Weather({defaultCity}){
           </form> 
         </nav>
         <div className="card border-info">
-          <DataLog info={data} pic={picture} nedry={picUrl}/>
+          <WeatherUnits info={data}/>
         </div>
         <SweetAlert2 {...swalProps} />
       </div>
