@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import logo from './img/logo.svg';
 import Units from './Units';
 import './style/Weather.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCrosshairs } from '@fortawesome/free-solid-svg-icons'
 import SweetAlert2 from 'react-sweetalert2';
 
 
 export default function CitySearch({defaultCity}){
- 
+  const currentloc = <FontAwesomeIcon icon={faCrosshairs} />
   let [element, setElement] = useState();
   let [city, setCity] = useState();
   let [scity, setScity] = useState(defaultCity);
@@ -43,6 +45,7 @@ export default function CitySearch({defaultCity}){
           <img src={logo} alt="react-logo"  className="Weather-logo d-inline-block align-text-top"/>
           <h1> Weather app </h1>
           <small>by JSCO</small>
+          <button>{currentloc}</button>
           <form onSubmit = {handleSubmit} requiredvalue={city} className="d-flex Weather-form">
             <input type="search" placeholder="Search City" autoFocus= "on" className="form-control me-2" onChange={handleCity}/>
             <button className="btn" type="submit">Search</button>

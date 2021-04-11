@@ -16,23 +16,24 @@ export default function Units({city}){
         event.preventDefault();
         setUnit('metric');
     }
-    
-    if (unit==='metric'){
+
+    function convertTemperature(){
+      if (unit==='metric'){
         return(
-          <div>
             <h4 className = 'units'>
-              ºC|<a href='/' onClick = {convertToFahrenheit} >ºF</a>
-            </h4>
-            <Weather searchedcity={city} units={unit}/>
-          </div>);
+              metric|<a href='/' onClick = {convertToFahrenheit} >imperial</a>
+            </h4>);
     }else{ 
       return(
-        <div>
           <h4 className = 'units'>
-            <a href='/' onClick = {convertToCelsius}>ºC</a>|ºF
-          </h4>
-          <Weather searchedcity={city} units={unit}/>
-        </div>
-    );
-    }  
+            <a href='/' onClick = {convertToCelsius}>metric</a>|imperial
+          </h4> );}  
+    }
+
+    return(
+      <div>
+        <Weather searchedcity={city} units={unit}/>
+        <h2 className='units'>Unit Sistem:</h2> {convertTemperature()}
+      </div>
+    )
 }
