@@ -7,14 +7,13 @@ import axios from 'axios';
 import './style/DataLog.css'
 
 export default function DataLog({info}){
-  
-  const iconUrl=`http://openweathermap.org/img/wn/`;
   const days = ["Sunday", "Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const iconUrl=`http://openweathermap.org/img/wn/`;
+  let usis = info.unit;
   let [loaded, setLoaded] = useState(false);
   let [data, setData] = useState({time:new Date(),icon:'01d'});
   let [wData, setWData] = useState(null);
-  let [units, setUnits] = useState(info.unit);
-
+  let [units, setUnits] = useState({temperature: "ºC", windSpeed:'m/s'});
 
   function handleResponse(response){
     setWData(response.data.daily);
@@ -31,12 +30,11 @@ export default function DataLog({info}){
      setLoaded(true);
  }
 
-  function unitChange(){
-    if (units==='metric'){return('m/s');
-    }else{return('mph')}}
-
   useEffect(()=>{
-    setLoaded(false)
+    setLoaded(false);
+    if (usis==='metric'){
+      setUnits({temperature: "ºC", windSpeed:'m/s'});
+    }else{setUnits({temperature: "ºF", windSpeed:'mph'})}
   },[info.unit])
  
  if(loaded){
@@ -58,17 +56,16 @@ export default function DataLog({info}){
       <div className="col-4">
         <div className="title"> 
          <img src={`${iconUrl}${data.icon}.png`} alt="Weather icon"/>
-         <h2>{data.temp}</h2>
-         
-       </div>
-       <h4>{info.city}, <small>{info.country}</small></h4>
+            <h2>{data.temp} {units.temperature}</h2>
+            <h4>{info.city}, <small>{info.country}</small></h4>
+         </div>
          <NiceDate time={data.time} days = {days}/>
          <h5 className="text-capitalize statistic">{data.description} | <small>Max:{data.max}°-Min:{data.min}°</small></h5>
          <div className="Forecast">
          <h4>Forecast</h4>
          <ul>
            <li>Pressure: {data.pressure} hPa</li>
-           <li>Wind Speed: {data.wind} {unitChange() }</li>
+           <li>Wind Speed: {data.wind} {units.windSpeed}</li>
            <li>UV Index: {data.uvi} </li>
            <li>Humidity: {data.humidity}% </li>
          </ul>
