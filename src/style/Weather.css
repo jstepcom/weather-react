@@ -41,6 +41,20 @@
     right: 50px;
     top: 17px;
   }
+
+  .curr-loc{
+    border-radius: 5px;
+    border-color: purple;
+    background-color: purple;
+    color: lime;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+  }
+  .curr-loc:hover{
+    border-color: lime;
+    background-color: lime;
+    color: purple; 
+  }
   
   .form-control{
     margin: 0 5px;
@@ -57,8 +71,7 @@
   .btn:hover{
     border-color: purple;
     background-color: lime;
-    color: purple;
-    
+    color: purple; 
   }
 
   .card{
