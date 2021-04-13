@@ -31,8 +31,9 @@ export default function CitySearch({defaultCity}){
     console.log(possition)
 
   }
-  function handleDefault(){
-    navigator.geolocation.getCurrentPosition(getCity)
+  function handleDefault(event){
+    event.preventDefault()
+    navigator.geolocation.getCurrentPosition(getCity);
   }
 
   function handleSubmit(event){
@@ -53,7 +54,7 @@ export default function CitySearch({defaultCity}){
           <small>by JSCO</small>
           
           <form onSubmit = {handleSubmit} requiredvalue={city} className="d-flex Weather-form">
-            <button className="curr-loc" onClick={handleDefault}>{currentloc}</button>
+            <button type= "button" className="curr-loc"  onClick={handleDefault}>{currentloc}</button>
             <input type="search" placeholder="Search City" autoFocus= "on" className="form-control me-2" onChange={handleCity}/>
             <button className="btn" type="submit">Search</button>
           </form> 
