@@ -76,7 +76,6 @@ export default function DataLog({info}){
  );
 }
 else{
-  console.log(info.coord)
    const dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?`;
    const predUrl = `${dailyUrl}lat=${info.coord.lat}&lon=${info.coord.lon}&units=${info.unit}&appid=${info.key}`;
    axios.get(predUrl).then(handleResponse);

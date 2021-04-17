@@ -10,7 +10,7 @@ export default function CitySearch({defaultCity}){
   const currentloc = <FontAwesomeIcon icon={faCrosshairs} />
   let [element, setElement] = useState();
   let [city, setCity] = useState();
-  let [scity, setScity] = useState(defaultCity);
+  let [scity, setScity] = useState({name:defaultCity});
   const swalProps = {
     show: true,
     showConfirmButton: true,
@@ -28,8 +28,8 @@ export default function CitySearch({defaultCity}){
     setCity(event.target.value); 
   }
   function getCity(possition){
-    console.log(possition)
-
+    console.log(possition.coords.latitude, possition.coords.longitude )
+    setScity({lat:possition.coords.latitude, lon:possition.coords.longitude})
   }
   function handleDefault(event){
     event.preventDefault()
@@ -40,28 +40,27 @@ export default function CitySearch({defaultCity}){
     event.preventDefault();
     if (city){
       setElement(); 
-      setScity(city);
+      setScity({name:city});
     }else{
-      setScity(scity);          
+      setScity({name:scity.name});          
       setElement(<div><SweetAlert2 {...swalProps} /></div>);
     }
   }
     return(
       <div className="search-city">
         <nav className="navbar  Weather-header">
-          <img src={logo} alt="react-logo"  className="Weather-logo d-inline-block align-text-top"/>
+          <img src = {logo} alt = "react-logo"  className = "Weather-logo d-inline-block align-text-top"/>
           <h1> Weather app </h1>
           <small>by JSCO</small>
-          
-          <form onSubmit = {handleSubmit} requiredvalue={city} className="d-flex Weather-form">
-            <button type= "button" className="curr-loc"  onClick={handleDefault}>{currentloc}</button>
-            <input type="search" placeholder="Search City" autoFocus= "on" className="form-control me-2" onChange={handleCity}/>
-            <button className="btn" type="submit">Search</button>
+          <form onSubmit = {handleSubmit} requiredvalue = {city} className = "d-flex Weather-form">
+            <button type = "button" className = "curr-loc"  onClick = {handleDefault}>{currentloc}</button>
+            <input type = "search" placeholder = "Search City" autoFocus = "on" className = "form-control me-2" onChange = {handleCity}/>
+            <button className = "btn" type = "submit">Search</button>
           </form> 
         </nav>
-        <div className="card border-info">
+        <div className = "card border-info">
          {element}
-         <Units city={scity}/>
+         <Units city = {scity}/>
         </div>
       </div>
     );   

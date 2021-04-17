@@ -25,7 +25,11 @@ export default function Weather({searchedcity, units}){
   },[units])
 
   function search(){
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedcity}&units=${units}&appid=${apiKey}`;
+    let apiUrl='';
+    if(searchedcity.name){
+    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchedcity.name}&units=${units}&appid=${apiKey}`;
+    }else{apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${searchedcity.lat}&lon=${searchedcity.lon}&units=${units}&appid=${apiKey}`;
+  }
     axios.get(apiUrl).then(getData);
 
   } 
