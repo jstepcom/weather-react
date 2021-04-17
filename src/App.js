@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import CitySearch from './CitySearch';
 import './style/App.css';
 

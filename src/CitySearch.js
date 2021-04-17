@@ -46,6 +46,8 @@ export default function CitySearch({defaultCity}){
       setElement(<div><SweetAlert2 {...swalProps} /></div>);
     }
   }
+
+  navigator.geolocation.getCurrentPosition(getCity);
     return(
       <div className="search-city">
         <nav className="navbar  Weather-header">
