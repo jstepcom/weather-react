@@ -10,7 +10,8 @@ export default function CitySearch({defaultCity}){
   const currentloc = <FontAwesomeIcon icon={faCrosshairs} />
   let [element, setElement] = useState();
   let [city, setCity] = useState();
-  let [scity, setScity] = useState({name:defaultCity});
+  let [scity, setScity] = useState(defaultCity);
+  let [coords, setCoords] = useState(); 
   const swalProps = {
     show: true,
     showConfirmButton: true,
@@ -24,18 +25,23 @@ export default function CitySearch({defaultCity}){
     confirmButtonColor: 'lime',
     text: 'Please type a city'};
 
+  function getCity(possition){
+    console.log(possition.coords.latitude, possition.coords.longitude)
+    setScity({lat:possition.coords.latitude, lon:possition.coords.longitude})
+    setCoords({lat:possition.coords.latitude, lon:possition.coords.longitude});
+  }
+  navigator.geolocation.getCurrentPosition(getCity); 
+    
   function handleCity(event){
     setCity(event.target.value); 
   }
-  function getCity(possition){
-    console.log(possition.coords.latitude, possition.coords.longitude )
-    setScity({lat:possition.coords.latitude, lon:possition.coords.longitude})
+  function setPosition(){
+    setScity ({lat:coords.lat,lon:coords.lon} )
   }
   function handleDefault(event){
     event.preventDefault()
-    navigator.geolocation.getCurrentPosition(getCity);
+    setPosition();
   }
-
   function handleSubmit(event){
     event.preventDefault();
     if (city){
@@ -47,7 +53,6 @@ export default function CitySearch({defaultCity}){
     }
   }
 
-  navigator.geolocation.getCurrentPosition(getCity);
     return(
       <div className="search-city">
         <nav className="navbar  Weather-header">
